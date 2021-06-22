@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Essa página vai ser massa!</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-	<h1>Essa página vai ser massa!</h1>
-	<h2>Um dia...</h2>
-	<h3>Bem vinda, {{ Nome }}</h3>
-	<a href="{% url 'help'%}">Link para página de ajuda</a>
+<h3>Bem vinda, {{ Nome }}</h3>
 
-	<ul>
-		{% for item in lista %}
-			{% if item != "bbb" %} 
-				<li>{{ item }}</li> 
-			{% endif %}
-		{% endfor %}
-	</ul>
+<ul>
+	{% for item in lista %}
+	{% if item != "bbb" %}
+	<li>{{ item }}</li>
+	{% endif %}
+	{% endfor %}
+</ul>
 
-	<h3>Membros</h3>
+<h3>Membros</h3>
 
-	<ul>
-		{% for membro in membros %}
-				<li>{{ membro.nome }}</li>
-		{% endfor %}
-	</ul>
+<ol>
+	{% for membro in membros %}
+	<li>{{ membro.nome }}</li>
+	{% endfor %}
+</ol>
 
-
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+
+</head>
+<body>
+
+    <header class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
+            <span class="mdc-top-app-bar__title">MFC</span>
+          </section>
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <a class="mdc-top-app-bar__action-item" aria-label="Index" href="{% url 'index'%}"> Index</a>
+            <a class="mdc-top-app-bar__action-item" aria-label="Main" href="{% url 'main'%}"> Quem são os Médicos de Família</a>
+            <a class="mdc-top-app-bar__action-item" aria-label="Duvidas" href="{% url 'duvidas'%}"> Minhas dúvidas</a>
+            <a class="mdc-top-app-bar__action-item" aria-label="Help" href="{% url 'help'%}"> Help</a>
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
+          </section>
+        </div>
+      </header>
+
+      <main class="mdc-top-app-bar--fixed-adjust">
+        {% block content%}
+        {% load staticfiles %}
+        {% endblock %}
+      </main>
+
+</body>
+</html>

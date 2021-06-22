@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Minhas dúvidas</h1>
+
+<ol>
+    {% for duvida in duvidas %}
+            <li>{{ duvida.Duvida}} <p> {{duvida.Descricao}} </p> <p> {{duvida.get_Tipo_de_duvida_display}} - {{duvida.dificuldade}} - {{duvida.Date|date:"d/m/Y"}} </p></li> 
+    {% endfor %}
+</ol>
+
+{% endblock %}
