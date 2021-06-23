@@ -27,3 +27,19 @@ def duvidas(request):
 	duvidas = Duvidas.objects.all()
 	context = {"duvidas" : duvidas}
 	return render(request, 'duvidas.html', context)
+
+def duvidas_formulario(request):
+	if request.method == 'GET':
+		return render(request, 'duvidas_formulario.html', {})
+	elif request.method == 'POST':
+		d = Duvidas(Duvida=request.POST["Duvida"], 
+			Descricao=request.POST["Descricao"], 
+			Tipo_de_duvida=request.POST["Tipo_de_duvida"], 
+			dificuldade=request.POST["dificuldade"], 
+			novidade=request.POST["novidade"])
+		d.save()
+		duvidas = Duvidas.objects.all()
+		context = {"duvidas" : duvidas}
+		return render(request, 'duvidas.html', context)
+	
+
