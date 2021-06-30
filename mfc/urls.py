@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from material.frontend import urls as frontend_urls
+from django.conf.urls.static import static
+from mfc import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("content.urls")),
     path('', include(frontend_urls)),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

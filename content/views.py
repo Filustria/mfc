@@ -42,4 +42,47 @@ def duvidas_formulario(request):
 		context = {"duvidas" : duvidas}
 		return render(request, 'duvidas.html', context)
 	
+def dados_fgv(request):
+	context = {}
+	return render(request, 'dados_fgv.html', context)
 
+def indicadores_fgv(request):
+	context = {}
+	return render(request, 'indicadores_fgv.html', context)
+
+
+def community_dwelling(request):
+	context = {}
+	return render(request, 'community_dwelling.html', context)
+
+def fgv(request):
+	context = {}
+	return render(request, 'fgv.html', context)
+
+def psicometria(request):
+	context = {}
+	return render(request, 'psicometria.html', context)
+
+def unasus(request):
+	context = {}
+	return render(request, 'unasus.html', context)
+
+def rehab(request):
+	context = {}
+	return render(request, 'rehab.html', context)
+
+def four_question(request):
+	context = {}
+	return render(request, 'four_question.html', context)
+
+def implementation(request):
+	context = {}
+	return render(request, 'implementation.html', context)
+
+def criterias(request):
+	context = {}
+	return render(request, 'criterias.html', context)
+
+def tools_implementation(request):
+	context = {}
+	return render(request, 'tools_implementation.html', context)
