@@ -1,0 +1,119 @@
+/* colors */
+.bg-primary{
+    background-color: #146173;
+}
+.primary{
+    color: #146173;
+}
+
+.bg-secondary{
+    background-color: #3F93A6;
+}
+.secondary{
+    color: #3F93A6;
+}
+
+.bg-light-blue{
+    background-color: #8BCAD9;
+}
+.light-blue{
+    color: #8BCAD9;
+}
+
+.bg-light-grey{
+    background-color: #C4EEF2;
+}
+.light-grey{
+    color: #C4EEF2;
+}
+
+.bg-white{
+    background-color: #F2F2F2;
+}
+.white{
+    color: #F2F2F2;
+}
+
+
+/* end colors */
+
+.container-fluid {
+    padding: 0;
+
+    
+}
+
+.container-fluid .row {
+    margin: 0;
+}
+
+/* Navbar */
+
+.navbar  {
+    margin-bottom: 20px;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav a.nav-link {
+    color: rgb(66, 20, 20);
+    letter-spacing: 1px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    height: 50px;
+    border-top: 2px solid #202020;
+}
+
+footer p {
+    color: #f5f5f5;
+    text-align: center;
+    top: 50%;
+    position: relative;
+}
+
+
+/* fix materialize sidebar links overlap */
+.sidenav li > a {
+    overflow:hidden;
+    white-space: nowrap
+    }
+
+.full-width {
+    width: 100%;
+}
+.full-height {
+    height: 100vh;
+    display: flex;
+}
+
+.jumbotron {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.component-1 {
+    display: flex;
+    flex-direction: column;
+}
+.col-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+}
+
+.align-vertical{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 20px;
+}

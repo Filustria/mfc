@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.template import loader
-from .models import Membros
 from .models import Duvidas
 
 # Create your views here.
@@ -9,9 +8,7 @@ from django.http import HttpResponse
 
 
 def index(request):
-	membros = Membros.objects.all()
-	lista = ["aaa", "bbb", "ccc", 2, 4, "lala", ["aaa", "bb"]]
-	context = {"Nome": "Pessoa", "lista" : lista, "membros" : membros}
+	context = {}
 	template = loader.get_template('index.html')
 	return HttpResponse(template.render(context, request))
 
