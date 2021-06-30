@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
 
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
+
 <body>
+  {% load static %}
+  <nav class="purple">
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  </nav>
 
-    <header class="mdc-top-app-bar">
-        <div class="mdc-top-app-bar__row">
-          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
-            <span class="mdc-top-app-bar__title">MFC</span>
-          </section>
-          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-            <a class="mdc-top-app-bar__action-item" aria-label="Index" href="{% url 'index'%}"> Index</a>
-            <a class="mdc-top-app-bar__action-item" aria-label="Main" href="{% url 'main'%}"> Quem são os Médicos de Família</a>
-            <a class="mdc-top-app-bar__action-item" aria-label="Duvidas" href="{% url 'duvidas'%}"> Minhas dúvidas</a>
-            <a class="mdc-top-app-bar__action-item" aria-label="Help" href="{% url 'help'%}"> Help</a>
-            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
-            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
-          </section>
+  <ul id="slide-out" class="sidenav">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img src={% static "background.jpg" %}>
         </div>
-      </header>
+        <a href="#user"><img src={% static "M.jpg" %} style="max-width: 100px; border-radius: 50px;"></a>
 
-      <main class="mdc-top-app-bar--fixed-adjust">
-        {% block content%}
-        {% load static %}
-        {% endblock %}
-      </main>
+        <a href="#name"><span class="white-text name">MFC</span></a>
+        <a href="#about"><span class="white-text email">Adelson Guaraci Jantsch</span></a>
+
+      </div>
+    </li>
+    <!-- <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li> -->
+    <li><a href="{% url 'index'%}">Home</a></li>
+    <li><a href="{% url 'main'%}">Main</a></li>
+    <li><a href="{% url 'duvidas'%}">Dúvidas</a></li>
+    <li><a href="{% url 'help'%}">Help</a></li>
+
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+
+  </ul>
+
+  <main class="mdc-top-app-bar--fixed-adjust">
+    {% block content%}
+    {% load static %}
+    {% endblock %}
+  </main>
+
+
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const elements = document.querySelectorAll('.sidenav');
+      const instances = M.Sidenav.init(elements, {});
+    });
+  </script>
 
 </body>
+
+
 </html>
