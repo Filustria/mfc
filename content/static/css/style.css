@@ -104,6 +104,10 @@ footer p {
     display: flex;
     flex-direction: column;
 }
+
+.first{
+    transform: translateY(-64px);
+}
 .col-2{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -111,9 +115,34 @@ footer p {
 
 }
 
+.col-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 10%;
+}
+
+.icon-large{
+    font-size: 5em;
+    width: 1.1em;
+    height: 1.1em;
+    /* border-radius: 15px;
+    border: solid black 2px; */
+    align-items: center;
+    margin: 0 auto;
+}
+
 .align-vertical{
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 0 20px;
+}
+
+.grandma{
+    background-image: url("/static/grandma.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 80%;
 }

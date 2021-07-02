@@ -1,49 +1,91 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-
-
-<div class="full-width full-height bg-primary component-1 jumbotron">
-	<h1>Lorem Ipsum</h1>
-	<p class="subtitle">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae, molestiae.</p>
-</div>
-
-<div class="full-width full-height bg-white component-1 col-2">
-	<div class="align-vertical">
-		<img src={% static "grandma.png" %} alt="grandma">
+<div class="first">
+	<div class="full-width full-height bg-primary component-1 jumbotron">
+		<h1>Lorem Ipsum</h1>
+		<p class="subtitle">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae, molestiae.</p>
 	</div>
-	<div class="align-vertical">
-		<h2>Lorem Ipsum</h2>
-		<p class="subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores ut soluta consectetur enim! Obcaecati, deserunt enim architecto error iste in consequuntur, minima saepe expedita modi quam neque? Ex, tempore.</p>
+
+	<div class="full-width full-height bg-white component-1 col-2">
+		<div class="align-vertical grandma">
+		</div>
+		<div class="align-vertical">
+			<h2>Lorem Ipsum</h2>
+			<p class="subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores ut soluta
+				consectetur enim! Obcaecati, deserunt enim architecto error iste in consequuntur, minima saepe expedita
+				modi
+				quam neque? Ex, tempore.</p>
+		</div>
+	</div>
+
+	<div class="full-width full-height bg-secondary component-1 col-3">
+		<div class="align-vertical">
+			<i class="material-icons icon-large">child_friendly</i>
+			<p class="subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores ut soluta
+				consectetur enim! Obcaecati, deserunt enim architecto error iste in consequuntur, minima saepe expedita
+				modi
+				quam neque? Ex, tempore.</p>
+		</div>
+		<div class="align-vertical">
+			<i class="material-icons icon-large">location_on</i>
+			<p class="subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores ut soluta
+				consectetur enim! Obcaecati, deserunt enim architecto error iste in consequuntur, minima saepe expedita
+				modi
+				quam neque? Ex, tempore.</p>
+		</div>
+		<div class="align-vertical">
+			<i class="material-icons icon-large">pregnant_woman</i>
+			<p class="subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores ut soluta
+				consectetur enim! Obcaecati, deserunt enim architecto error iste in consequuntur, minima saepe expedita
+				modi
+				quam neque? Ex, tempore.</p>
+		</div>
+	</div>
+
+	<div class="full-width full-height bg-white component-1 col-2">
+		<div class="align-vertical">
+			<h2>Lorem Ipsum</h2>
+		</div>
+		<div class="align-vertical">
+			<p class="subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores ut soluta
+				consectetur enim! Obcaecati, deserunt enim architecto error iste in consequuntur, minima saepe expedita
+				modi
+				quam neque? Ex, tempore.</p>
+			<p class="subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores ut soluta
+				consectetur enim! Obcaecati, deserunt enim architecto error iste in consequuntur, minima saepe expedita
+				modi
+				quam neque? Ex, tempore.</p>
+			<p class="subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores ut soluta
+				consectetur enim! Obcaecati, deserunt enim architecto error iste in consequuntur, minima saepe expedita
+				modi
+				quam neque? Ex, tempore.</p>
+		</div>
+	</div>
+
+	<div>
+		<a href="https://www.laerte.art.br/acervo/?_sfm_decada=2010&sf_paged=2" target="_blank"> Laerte</a>
+		<br>
+		<p></p>
+		<a href="https://www.filmelier.com/br/films" target="_blank"> Filmelier</a>
+		<br>
+		<p></p>
+		<a href="https://www.researchsquare.com/login?redirect=/home" target="_blank"> Researchsquare</a>
+		<br>
+		<p></p>
+		<a href="https://publichealth.gwu.edu/departments/global-health/wolfgang-munar" target="_blank"> GWU Global
+			Health</a>
+		<br>
+		<p></p>
+		<a href="https://researcher.nature.com/your-submissions" target="_blank"> Nature</a>
+		<br>
+		<p></p>
+		<a href="https://mc.manuscriptcentral.com/bmjopen" target="_blank"> BMJ Open</a>
+		<br>
+		<p></p>
+		<a href="https://americanaffairsjournal.org/2021/05/the-brazilianization-of-the-world/?fbclid=IwAR2xY9Q0qKs9K2Eay8GFGaeVZ7SUbN3mbaXO_rZV3tOXWsSCydJ9g_ND7L4"
+			target="_blank"> The Brazilianization of the World</a>
+		<br>
 	</div>
 </div>
-
-<div class="full-width full-height bg-secondary component-1">
-	<h3>Lorem Ipsum</h3>
-	<p class="subtitle">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae, molestiae.</p>
-</div>
-
-<!-- <p></p>
-<a href="https://www.laerte.art.br/acervo/?_sfm_decada=2010&sf_paged=2" target="_blank"> Laerte</a>
-<br>
-<p></p>
-<a href="https://www.filmelier.com/br/films" target="_blank"> Filmelier</a>
-<br>
-<p></p>
-<a href="https://www.researchsquare.com/login?redirect=/home" target="_blank"> Researchsquare</a>
-<br>
-<p></p>
-<a href="https://publichealth.gwu.edu/departments/global-health/wolfgang-munar" target="_blank"> GWU Global Health</a>
-<br>
-<p></p>
-<a href="https://researcher.nature.com/your-submissions" target="_blank"> Nature</a>
-<br>
-<p></p>
-<a href="https://mc.manuscriptcentral.com/bmjopen" target="_blank"> BMJ Open</a>
-<br>
-<p></p>
-<a href="https://americanaffairsjournal.org/2021/05/the-brazilianization-of-the-world/?fbclid=IwAR2xY9Q0qKs9K2Eay8GFGaeVZ7SUbN3mbaXO_rZV3tOXWsSCydJ9g_ND7L4" target="_blank"> The Brazilianization of the World</a>
-<br> -->
-
-
 {% endblock %}
