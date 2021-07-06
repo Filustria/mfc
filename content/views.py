@@ -83,3 +83,7 @@ def criterias(request):
 def tools_implementation(request):
 	context = {}
 	return render(request, 'tools_implementation.html', context)
+
+def paf(request):
+	context = {}
+	return render(request, 'paf.html', context)

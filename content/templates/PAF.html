@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<p></p>
+
+<h2>Population Attributable Fraction</h2>
+<br>
+<br>
+<br>
+
+<h4>Informações a serem consideradas:</h4>
+
+
+<ol>
+
+    <li>Tamanho da população (input - integer)</li>
+    <li>Cobertura da população (input - 0 < N < 100)</li>
+    <li>Número de Equipes de Saúde da Família (input - integer)</li>
+    <li>MFC = Proporção da população atendida por Médico de Família (input - 0 < N < 100)</li>
+    <li>Generalista = Proporção da população atendida por Generalista (1 - MFC)</li>
+    <li>Tipo de exame (input - lista)</li>
+
+</ol>
+
+<h4>Informações carregadas no sistema:</h4>
+
+
+<ol>
+
+    <li>y = Risco do evento (float)</li>
+    <li>z = Oportunidades de ocorrência do evento (integer)</li>
+    <li>Número de Eventos (integer)</li>
+    <li>Tipo de exame (input - lista)</li>
+    <li>Ponto (float)</li>
+    <li>Upper (float)</li>
+    <li>Lower (float)</li>
+
+</ol>
+
+<h4>Funções que acontecerão dentro do sistema:</h4>
+<br>
+<br>
+
+<h5>Cálculo da Fração Atribuível na População</h5><br>
+
+
+
+
+
+<br>
+<a href="https://www.bmj.com/content/360/bmj.k757" target="_blank"> Population attributable fraction. BMJ 2018; 360 doi: https://doi.org/10.1136/bmj.k757</a>
+<p></p>
+<br>
+Nada mais é do que um somatório de todos os (Riscos)*(proporção de cada população exposta ao risco). <br>
+
+<h4><b>PAF = ((Risco*proporções-pré) - (Risco*proporções-pós))/(Risco*proporções-pré)</b></h4>
+
+<h5>Risco sempre será igual para cada população, mas muda a proporção da população em cada risco. Posso ter 30% com MFC no pré. Depois posso ter 70% no pós. O risco junto ao MFC continua o mesmo, mas a população agora aumentou de 30 para 70%</h5>
+
+<h4><b>((generalista*1+MFC*ponto) - (0*generalista*1+1*ponto))/(generalista*1+MFC*ponto)*100,1))</b></h4>
+<br>
+<br>
+pontopaf <- abs(round(((generalista*1+MFC*ponto) - 
+(0*generalista*1+1*ponto))/
+  (generalista*1+MFC*ponto)*100,1))<br>
+
+lowerpaf <- abs(round(((generalista*1+MFC*lower) - 
+(0*generalista*1+1*lower+0))/
+  (generalista*1+MFC*lower)*100,1))<br>
+
+upperpaf <- abs(round(((generalista*1+MFC*upper) - 
+(0*generalista*1+1*upper+0))/
+  (generalista*1+MFC*upper)*100,1))
+<br>
+<br>
+
+PAF <- paste0("-",pontopaf, " (-",upperpaf,"; -",lowerpaf,")")
+<br>
+<br>
+
+Aqui se somam as informações que foram inputadas pelo usuário:
+<br>
+<br>
+
+y = Risco do evento (float)<br>
+z = Oportunidades de ocorrência do evento (integer)<br>
+<br>
+poppontopaf <- round(z*y*pontopaf/100,0)<br>
+poplowerpaf <- round(z*y*lowerpaf/100,0)<br>
+popupperpaf <- round(z*y*upperpaf/100,0)<br>
+
+<br>
+<br>
+
+<img src={% static "PAF.png" style="max-width: 50%" %}>
+
+{% endblock %}

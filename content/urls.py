@@ -18,4 +18,5 @@ urlpatterns = [
     path('implementation/', views.implementation, name='implementation'),
     path('criterias/', views.criterias, name='criterias'),
     path('tools_implementation/', views.tools_implementation, name='tools_implementation'),
+    path('paf/', views.paf, name='paf'),
 ]
