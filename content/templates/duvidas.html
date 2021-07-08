@@ -1,13 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Minhas dúvidas</h1>
-<a class="" aria-label="duvidas_forms" href="{% url 'duvidas_forms'%}"> Adicionar nova dúvida</a>
-<ol>
-    {% for duvida in duvidas %}
-            <li>{{ duvida.Duvida}} <p> {{duvida.Descricao}} </p> 
-                <p> {{duvida.get_Tipo_de_duvida_display}} - {{duvida.dificuldade}} - {{duvida.Date|date:"d/m/Y"}} </p></li> 
-    {% endfor %}
-</ol>
+<!-- a classe container por padrão já tem o padding  -->
+<div class="container">
+    <h1>Minhas dúvidas</h1>
+    <a class="btn waves-effect" aria-label="duvidas_forms" href="{% url 'duvidas_forms'%}"> Adicionar nova dúvida</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th> Dúvida</th>
+                <th> Descição</th>
+                <th> Data</th>
+                <th> Tipo de dúvida</th>
+                <th> Novidade</th>
+                <th> Dificuldade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for duvida in duvidas %}
+            <tr>
+                <td> {{duvida.Duvida}}</td>
+                <td> {{duvida.Descricao}} </td>
+                <td>{{duvida.Date|date:"d/m/Y"}}</td>
+                <td>{{duvida.get_Tipo_de_duvida_display}} </td>
+                <td>{{duvida.novidade}}</td>
+                <td>{{duvida.dificuldade}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
 
 {% endblock %}
