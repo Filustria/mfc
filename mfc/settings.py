@@ -75,15 +75,15 @@ WSGI_APPLICATION = 'mfc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# TODO: consertar
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'postgres',
-        'NAME': 'mfc_db',
-        'PASSWORD': 'pururuca',
+        'NAME': 'mfc',
+        'PASSWORD': 'page394',
     },
 }
-
 
 
 # Password validation
@@ -123,8 +123,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'static_media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_media/')
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
