@@ -90,7 +90,3 @@ def tools_implementation(request):
 def paf(request):
 	context = {}
 	return render(request, 'paf.html', context)
-
-def dashboard(request):
-	context = {}
-	return render(request, 'dashboard.html', context)
