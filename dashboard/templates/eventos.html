@@ -2,10 +2,40 @@
 {% block content %}
 {% load static %}
 
-<form action="#">
-    <p class="range-field">
-      <input type="range" id="test5" min="0" max="100" />
-    </p>
-</form>
+<div class="content">
+
+  <h1>Eventos</h1>
+  <table>
+    <thead>
+        <tr>
+            <th> Nome</th>
+            <th> Tipo</th>
+            <th> Risco</th>
+            <th> Oportunidades</th>
+            <th> Ocorrências</th>
+            <th> Ponto (Lower - Upper)</th>
+        </tr>
+    </thead>
+  
+    <tbody>
+        {% for evento in eventos %}
+        <tr>
+  
+            <td> 
+              <a href="{% url 'evento' evento_id=evento.id%}">{{evento.nome}}</a>
+              
+            </td>
+            <td> {{evento.tipo}} </td>
+            <td>{{evento.risco}}</td>
+            <td>{{evento.oportunidades}} </td>
+            <td>{{evento.ocorrencias}}</td>
+            <td>
+              {{evento.ponto}} ( {{evento.lower}} - {{evento.upper}} )
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}

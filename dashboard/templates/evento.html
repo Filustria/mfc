@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="content">
+
+  <h1>Evento</h1>
+  <p>
+    Na sua cidade há 100 Equipes de Saúde da Família. Na opção abaixo, determine a quantidade de Médicos de Família que
+    você tem disponível na sua cidade e veja as mudanças que podem ocorrer na quantidade de eventos:
+  </p>
+  <p class="range-field">
+    <input type="range" id="alcance" min="0" max="100" />
+  </p>
+
+
+  <p> <span class="bold">Nome:</span> {{evento.nome}} </p>
+  <p> <span class="bold">Tipo:</span> {{evento.tipo}} </p>
+  <p> <span class="bold">Risco:</span> {{evento.risco}} </p>
+  <p> <span class="bold">Oportunidades:</span> {{evento.oportunidades}} </p>
+  <p> <span class="bold">Ocorrências:</span> {{evento.ocorrencias}} </p>
+  <p> <span class="bold">Ponto (Lower - Upper):</span> {{evento.ponto}} ( {{evento.lower}} - {{evento.upper}} ) </p>
+
+  <p id="texto-exemplo">
+
+  </p>
+</div>
+
+
+<script>
+  // const form = document.getElementById('form_de_range')
+  const alcance = document.getElementById('alcance')
+
+  alcance.addEventListener('mouseup', function (event) {
+    // nao mandar o form para lugar nenhum, permanecer aqui
+    event.preventDefault()
+
+    const texto = document.getElementById('texto-exemplo')
+
+    // // paf = (a - b) / a
+    // const a = (100*100*1)+0*100*
+
+    texto.innerText = `você tem ${100 - parseInt(alcance.value)} Generalistas e ${alcance.value} Médicos de Família`
+
+  })
+
+</script>
+{% endblock %}

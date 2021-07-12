@@ -83,7 +83,6 @@ WSGI_APPLICATION = 'mfc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# TODO: consertar
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

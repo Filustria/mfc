@@ -147,3 +147,10 @@ footer p {
     background-position: center;
     width: 80%;
 }
+
+.bold{
+    font-weight: bolder;
+}
+.content{
+    margin: 3% 5%;
+}
