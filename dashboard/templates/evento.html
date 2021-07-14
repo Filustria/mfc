@@ -6,11 +6,21 @@
 
   <h1>Evento</h1>
   <p>
-    Na sua cidade há 100 Equipes de Saúde da Família. Na opção abaixo, determine a quantidade de Médicos de Família que
-    você tem disponível na sua cidade e veja as mudanças que podem ocorrer na quantidade de eventos:
+    <!-- Na sua cidade há 100 Equipes de Saúde da Família. Na opção abaixo, determine a quantidade de Médicos de Família que
+    você tem disponível na sua cidade e veja as mudanças que podem ocorrer na quantidade de eventos: -->
+    Ao longo de um ano, nossa população terá 486811 consultas, nas quais 51757 exames são solicitados. 33% das consultas
+    são feitas por Médicos de Família e 66% são feitas por médicos Generalistas. Pacientes que consultam com Médicos de
+    Família têm um risco 47% menor de que um Hemograma seja solicitado na consulta.
+    <br>
+    Use a barra para mudar a proporção de consultas feitas por Médicos de Família e Generalistas e veja o que acontecerá
+    com os pedidos de hemograma.
   </p>
   <p class="range-field">
-    <input type="range" id="alcance" min="0" max="100" />
+  <div class="flex space-between">
+    <p>Generalistas ( <span id="generalistas">50</span>% ) </p>
+    <p>Médicos de família( <span id="medicosDeFamilia"> 50</span>% ) </p>
+  </div>
+  <input type="range" id="alcance" min="0" max="100" />
   </p>
 
 
@@ -21,7 +31,7 @@
   <p> <span class="bold">Ocorrências:</span> {{evento.ocorrencias}} </p>
   <p> <span class="bold">Ponto (Lower - Upper):</span> {{evento.ponto}} ( {{evento.lower}} - {{evento.upper}} ) </p>
 
-  <p id="texto-exemplo">
+  <p id="texto-resultado">
 
   </p>
 </div>
@@ -31,16 +41,56 @@
   // const form = document.getElementById('form_de_range')
   const alcance = document.getElementById('alcance')
 
+  const generalistasSpan = document.getElementById('generalistas')
+  const medicosDeFamiliaSpan = document.getElementById('medicosDeFamilia')
+  alcance.addEventListener('change', function (event) {
+    medicosDeFamiliaSpan.innerText = `${alcance.value}`
+    generalistasSpan.innerText = `${100 - alcance.value}`
+
+  })
+
   alcance.addEventListener('mouseup', function (event) {
     // nao mandar o form para lugar nenhum, permanecer aqui
     event.preventDefault()
 
-    const texto = document.getElementById('texto-exemplo')
+    const medicosDeFamilia = parseInt(alcance.value)
+    const generalistas = 100 - medicosDeFamilia
 
-    // // paf = (a - b) / a
-    // const a = (100*100*1)+0*100*
+    const proporcaoInicialGeneralistas = 0.66
+    const proporcaoInicialMedicosDeFamilia = parseFloat((1 - proporcaoInicialGeneralistas).toFixed(2))
 
-    texto.innerText = `você tem ${100 - parseInt(alcance.value)} Generalistas e ${alcance.value} Médicos de Família`
+
+    // usando a mesma sintaxe usada no html para acessar o objeto passado pelo context da nossa view
+    const ponto = parseFloat('{{evento.ponto}}')
+    const upper = parseFloat('{{evento.upper}}')
+    const lower = parseFloat('{{evento.lower}}')
+    const y = parseFloat('{{evento.risco}}')
+    const z = parseFloat('{{evento.oportunidades}}')
+    const ocorrencias = parseFloat('{{evento.ocorrencias}}')
+
+    const pontoPAF = (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * ponto) - (generalistas * 1 + medicosDeFamilia * ponto) /
+      (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * ponto)
+
+    const upperPAF = (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * upper) - (generalistas * 1 + medicosDeFamilia * upper) /
+      (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * upper)
+
+    const lowerPAF = (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * lower) - (generalistas * 1 + medicosDeFamilia * lower) /
+      (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * lower)
+
+
+    const popPontoPAF = Math.round((z * y * pontoPAF / 100).toFixed(4), 0)
+    const popLowerPAF = Math.round((z * y * lowerPAF / 100).toFixed(4), 0)
+    const popUpperPAF = Math.round((z * y * upperPAF / 100).toFixed(4), 0)
+
+    const diferenca = ((ocorrencias + popPontoPAF) / ocorrencias * 100).toFixed(1)
+    const intervaloLower = ocorrencias + popLowerPAF
+    const intervaloUpper = ocorrencias + popUpperPAF
+
+
+    const texto = document.getElementById('texto-resultado')
+    texto.innerText = `Ao longo de um ano, caso ${alcance.value}% dos médicos aqui sejam Médicos de Família,  haverá uma redução de ${diferenca}% no número total de exames solicitados. 
+    Dos ${ocorrencias} exames solicitados inicialmente, ${(diferenca*ocorrencias/100).toFixed(0)} deixarão de ser solicitados, com um intervalo de confiança entre ${intervaloLower} e ${intervaloUpper} exames.`
+
 
   })
 
