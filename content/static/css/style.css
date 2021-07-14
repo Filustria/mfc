@@ -160,3 +160,20 @@ footer p {
 .space-between{
     justify-content: space-between;
 }
+
+.range-box{
+    display: flex;
+}
+
+.family_doctor {
+    text-align: end;
+}
+
+#generalistas , #medicosDeFamilia{
+    font-size: x-large;
+    font-weight: 800;
+}
+
+input[type="range"]{
+    margin: 40px;
+}

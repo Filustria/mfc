@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<div class="content">
+<div class="container">
 
   <h1>Evento</h1>
   <p>
@@ -15,21 +15,28 @@
     Use a barra para mudar a proporção de consultas feitas por Médicos de Família e Generalistas e veja o que acontecerá
     com os pedidos de hemograma.
   </p>
-  <p class="range-field">
-  <div class="flex space-between">
-    <p>Generalistas ( <span id="generalistas">50</span>% ) </p>
-    <p>Médicos de família( <span id="medicosDeFamilia"> 50</span>% ) </p>
-  </div>
-  <input type="range" id="alcance" min="0" max="100" />
-  </p>
-
 
   <p> <span class="bold">Nome:</span> {{evento.nome}} </p>
   <p> <span class="bold">Tipo:</span> {{evento.tipo}} </p>
   <p> <span class="bold">Risco:</span> {{evento.risco}} </p>
-  <p> <span class="bold">Oportunidades:</span> {{evento.oportunidades}} </p>
+  <p> <span class="bold">Consultas:</span> {{evento.oportunidades}} </p>
   <p> <span class="bold">Ocorrências:</span> {{evento.ocorrencias}} </p>
-  <p> <span class="bold">Ponto (Lower - Upper):</span> {{evento.ponto}} ( {{evento.lower}} - {{evento.upper}} ) </p>
+  <p> <span class="bold"> Risco relativo (95% IC):</span> {{evento.ponto}} ( {{evento.lower}} - {{evento.upper}} ) </p>
+
+
+  <p class="range-field">
+  <div class="flex space-between">
+    <p>Médicos generalistas </p>
+    <p class="family_doctor">Médicos de família</p>
+  </div>
+  <div class="range-box">
+    <p><span id="generalistas">50</span>% </p>
+    <input type="range" id="alcance" min="0" max="100" />
+    <p class="family_doctor"><span id="medicosDeFamilia"> 50</span>%  </p>
+  </div>
+  
+  </p>
+
 
   <p id="texto-resultado">
 
