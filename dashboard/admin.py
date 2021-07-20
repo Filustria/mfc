@@ -44,8 +44,8 @@ class EventoAdmin(admin.ModelAdmin):
                             tipo = 'EXAME'
 
                         ponto = float(ponto.split('(', 1)[0].strip())
-                        upper = float(upper.split('(', 1)[1].split('-')[0].strip())
-                        lower = float(lower.split('-', 1)[1].split(')')[0].strip())
+                        upper = float(upper.split('-', 1)[1].split(')')[0].strip())
+                        lower = float(lower.split('(', 1)[1].split('-')[0].strip())
                         
                         Evento.objects.create(nome=nome, tipo=tipo, risco=risco,
                                               oportunidades=oportunidades, ocorrencias=ocorrencias, ponto=ponto, upper=upper, lower=lower)
