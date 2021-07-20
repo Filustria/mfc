@@ -2,26 +2,40 @@
 {% block content %}
 {% load static %}
 
-<div class="container">
+<div class="container evento">
 
   <h1>Evento</h1>
-  <p>
-    <!-- Na sua cidade há 100 Equipes de Saúde da Família. Na opção abaixo, determine a quantidade de Médicos de Família que
-    você tem disponível na sua cidade e veja as mudanças que podem ocorrer na quantidade de eventos: -->
-    Ao longo de um ano, nossa população terá <b>{{evento.oportunidades}} consultas</b>, nas quais <b>{{evento.ocorrencias}} exames de {{evento.nome}}</b> 
-    são solicitados. 66% são feitas por médicos Generalistas e 33% das consultas da nossa população foram feitas por Médicos de Família. 
-    <b>Pacientes que consultam com Médicos de Família têm um risco {{evento.menos_ponto}}% menor de que um {{evento.nome}} seja solicitado na consulta</b>.
-    <br>
-    Use a barra para mudar a proporção de consultas feitas por Médicos de Família e Generalistas e veja o que acontecerá
-    com os pedidos de <b>{{evento.nome}}</b>.
-  </p>
 
-  <p> <span class="bold">Nome:</span> {{evento.nome}} </p>
-  <p> <span class="bold">Tipo:</span> {{evento.tipo}} </p>
-  <p> <span class="bold">Risco:</span> {{evento.risco}} </p>
-  <p> <span class="bold">Consultas:</span> {{evento.oportunidades}} </p>
-  <p> <span class="bold">Ocorrências:</span> {{evento.ocorrencias}} </p>
-  <p> <span class="bold"> Risco relativo (95% IC):</span> {{evento.ponto}} ( {{evento.lower}} - {{evento.upper}} ) </p>
+  <div class="evento-box">
+
+    <div class="ficha">
+
+      <p> <span class="bold">Nome:</span> {{evento.nome}} </p>
+      <p> <span class="bold">Tipo:</span> {{evento.tipo}} </p>
+      <p> <span class="bold">Risco:</span> {{evento.risco}} </p>
+      <p> <span class="bold">Consultas:</span> {{evento.oportunidades}} </p>
+      <p> <span class="bold">Ocorrências:</span> {{evento.ocorrencias}} </p>
+      <p> <span class="bold"> Risco relativo (95% IC):</span> {{evento.ponto}} ( {{evento.lower}} - {{evento.upper}} ) </p>
+    
+    </div>
+
+    <div class="descricao">
+
+      <p>
+        <!-- Na sua cidade há 100 Equipes de Saúde da Família. Na opção abaixo, determine a quantidade de Médicos de Família que
+        você tem disponível na sua cidade e veja as mudanças que podem ocorrer na quantidade de eventos: -->
+        Ao longo de um ano, nossa população terá <b>{{evento.oportunidades}} consultas</b>, nas quais <b>{{evento.ocorrencias}} exames de {{evento.nome}}</b> 
+        são solicitados. 66% são feitas por médicos Generalistas e 33% das consultas da nossa população foram feitas por Médicos de Família. 
+        <b>Pacientes que consultam com Médicos de Família têm um risco {{evento.menos_ponto}}% menor de que um {{evento.nome}} seja solicitado na consulta</b>.
+        <br>
+        Use a barra para mudar a proporção de consultas feitas por Médicos de Família e Generalistas e veja o que acontecerá
+        com os pedidos de <b>{{evento.nome}}</b>.
+      </p>
+      
+    </div>
+
+  </div>
+
 
 
   <p class="range-field">
@@ -97,12 +111,12 @@
     const texto = document.getElementById('texto-resultado')
 
     if (diferenca > 0) {
-      texto.innerHTML = `Ao longo de um ano, caso <b>${alcance.value}%</b> dos médicos aqui sejam Médicos de Família, haverá uma redução de <b>${diferenca}%</b> no número total de exames solicitados. 
-    Dos <b>${ocorrencias}</b> exames solicitados inicialmente, <b>${(diferenca*ocorrencias/100).toFixed(0)}</b> exames deixarão de ser solicitados, com um intervalo de confiança entre <b>${intervaloUpper}</b> e <b>${intervaloLower}</b> exames.`
+      texto.innerHTML = `Ao longo de um ano, caso <b class="result">${alcance.value}%</b> dos médicos aqui sejam Médicos de Família, haverá uma redução de <b  class="result">${diferenca}%</b> no número total de exames solicitados. 
+    Dos <b  class="result">${ocorrencias}</b> exames solicitados inicialmente, <b  class="result">${(diferenca*ocorrencias/100).toFixed(0)}</b> exames deixarão de ser solicitados, com um intervalo de confiança entre <b class="result">${intervaloUpper}</b> e <b class="result">${intervaloLower}</b> exames.`
     }
     else {
-      texto.innerHTML = `Ao longo de um ano, caso <b>${alcance.value}%</b> dos médicos aqui sejam Médicos de Família, haverá um aumento de <b>${Math.abs(diferenca)}%</b> no número total de exames solicitados. 
-    Dos <b>${ocorrencias}</b> exames solicitados inicialmente, <b>${(Math.abs(diferenca*ocorrencias/100).toFixed(0))}</b> novos exames passarão a ser solicitados, com um intervalo de confiança entre <b>${Math.abs(intervaloUpper)}</b> e <b>${Math.abs(intervaloLower)}</b> exames.`
+      texto.innerHTML = `Ao longo de um ano, caso <b class="result">${alcance.value}%</b> dos médicos aqui sejam Médicos de Família, haverá um aumento de <b  class="result">${Math.abs(diferenca)}%</b> no número total de exames solicitados. 
+    Dos <b  class="result">${ocorrencias}</b> exames solicitados inicialmente, <b  class="result">${(Math.abs(diferenca*ocorrencias/100).toFixed(0))}</b> novos exames passarão a ser solicitados, com um intervalo de confiança entre <b  class="result">${Math.abs(intervaloUpper)}</b> e <b  class="result">${Math.abs(intervaloLower)}</b> exames.`
     }
 
 

@@ -148,6 +148,20 @@ footer p {
     width: 80%;
 }
 
+.evento-box{
+    display: flex;
+    justify-content: space-around;
+}
+
+.ficha{
+    min-width: 45%;
+}
+
+b.result{
+    font-size: x-large;
+    font-weight: 800;
+    color: #146173;
+}
 .bold{
     font-weight: bolder;
 }
@@ -177,3 +191,9 @@ footer p {
 input[type="range"]{
     margin: 40px;
 }
+
+@media only screen and (max-width: 600px) {
+    .evento-box {
+      flex-direction: column;
+    }
+  }
