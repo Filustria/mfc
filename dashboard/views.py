@@ -17,6 +17,7 @@ def eventos(request):
 def evento(request, evento_id):
     try:
         evento = Evento.objects.get(id=evento_id)
+        evento.menos_ponto = round((1 - evento.ponto)*100, 1)
     except Evento.DoesNotExist:
         raise Http404("Evento does not exist")
     context = {'evento': evento}
