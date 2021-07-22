@@ -65,14 +65,13 @@
   const generalistasSpan = document.getElementById('generalistas')
   const medicosDeFamiliaSpan = document.getElementById('medicosDeFamilia')
   alcance.addEventListener('change', function (event) {
+    
+    // nao mandar o form para lugar nenhum, permanecer aqui
+    event.preventDefault()
+    
     medicosDeFamiliaSpan.innerText = `${alcance.value}`
     generalistasSpan.innerText = `${100 - alcance.value}`
 
-  })
-
-  alcance.addEventListener('mouseup', function (event) {
-    // nao mandar o form para lugar nenhum, permanecer aqui
-    event.preventDefault()
 
     const medicosDeFamilia = parseInt(alcance.value)
     const generalistas = 100 - medicosDeFamilia
