@@ -80,7 +80,6 @@
       d.value =  ((resultado[0]*d.ocorrencias/100)+d.ocorrencias).toFixed(0)
       new_data.push(d)
     })
-    console.log(new_data)
     const graphic = document.getElementById('graphic')
     graphic.innerHTML = ""
     draw_chart(new_data)
