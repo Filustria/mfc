@@ -157,6 +157,10 @@ footer p {
     min-width: 45%;
 }
 
+a{
+    color: #146173;
+}
+
 b.result{
     font-size: x-large;
     font-weight: 800;
