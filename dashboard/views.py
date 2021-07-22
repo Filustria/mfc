@@ -11,7 +11,16 @@ def dashboard(request):
 
 def eventos(request):
     eventos = Evento.objects.all()
-    data = [{"name" : e.nome, "value" : e.ocorrencias} for e in eventos[:10]]
+    data = [
+        {"name" : e.nome, 
+        "value" : e.ocorrencias,
+        "ocorrencias" : e.ocorrencias,
+        "ponto" : e.ponto,
+        "upper" : e.upper,
+        "lower" : e.lower,
+        "y" : e.risco,
+        "z" : e.oportunidades
+        } for e in eventos[:10]]
     context = {'eventos': eventos, 'data' : json.dumps(data)}
     return render(request, 'eventos.html', context)
 

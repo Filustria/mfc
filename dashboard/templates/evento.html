@@ -77,10 +77,6 @@
     const medicosDeFamilia = parseInt(alcance.value)
     const generalistas = 100 - medicosDeFamilia
 
-    const proporcaoInicialGeneralistas = 0.66
-    const proporcaoInicialMedicosDeFamilia = parseFloat((1 - proporcaoInicialGeneralistas).toFixed(2))
-
-
     // usando a mesma sintaxe usada no html para acessar o objeto passado pelo context da nossa view
     const ponto = parseFloat('{{evento.ponto}}')
     const upper = parseFloat('{{evento.upper}}')
@@ -89,24 +85,11 @@
     const z = parseFloat('{{evento.oportunidades}}')
     const ocorrencias = parseFloat('{{evento.ocorrencias}}')
 
-    const pontoPAF = (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * ponto) - (generalistas * 1 + medicosDeFamilia * ponto) /
-      (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * ponto)
+    let resultado = calculate_difference(generalistas, medicosDeFamilia, ponto, upper, lower, ocorrencias, y, z)
 
-    const upperPAF = (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * upper) - (generalistas * 1 + medicosDeFamilia * upper) /
-      (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * upper)
-
-    const lowerPAF = (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * lower) - (generalistas * 1 + medicosDeFamilia * lower) /
-      (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * lower)
-
-
-    const popPontoPAF = Math.round((z * y * pontoPAF / 100).toFixed(4), 0)
-    const popLowerPAF = Math.round((z * y * lowerPAF / 100).toFixed(4), 0)
-    const popUpperPAF = Math.round((z * y * upperPAF / 100).toFixed(4), 0)
-
-    const diferenca = ((ocorrencias + popPontoPAF) / ocorrencias * 100).toFixed(1)
-    const intervaloLower = ocorrencias + popLowerPAF
-    const intervaloUpper = ocorrencias + popUpperPAF
-
+    const diferenca = resultado[0]
+    const intervaloLower = resultado[1]
+    const intervaloUpper = resultado[2]
 
     const texto = document.getElementById('texto-resultado')
 
