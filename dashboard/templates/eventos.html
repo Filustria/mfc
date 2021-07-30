@@ -59,7 +59,8 @@
   let data = '{{ data | safe }}'
   data = JSON.parse(data)
 
-  draw_chart(data)
+  let max_domain = 350
+  draw_chart(data, max_domain)
 
   const generalistasSpan = document.getElementById('generalistas')
   const medicosDeFamiliaSpan = document.getElementById('medicosDeFamilia')
@@ -81,7 +82,8 @@
     })
     const graphic = document.getElementById('graphic')
     // graphic.innerHTML = ""
-    draw_chart(new_data)
+    console.log(new_data)
+    draw_chart(new_data, max_domain)
   })
 </script>
 

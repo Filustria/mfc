@@ -14,10 +14,10 @@ const svg = d3.select("#graphic")
 
 const x = d3.scaleLinear()
   .range([0, width])
-  .domain([0, 75000])
+  
 
 const xAxis = svg.append("g")
-  .attr("transform", `translate(0, ${height})`)
+  .attr("transform", `translate(0, ${height})`) // colocar o eixo X na parte de baixo
 
 
 const y = d3.scaleBand()
@@ -27,7 +27,9 @@ const y = d3.scaleBand()
 const yAxis = svg.append("g")
 
 // ------------------------------------
-function draw_chart(data) {
+function draw_chart(data, max_domain=350) {
+
+  x.domain([0, max_domain])
 
   xAxis.call(d3.axisBottom(x))
     .selectAll("text")
@@ -46,12 +48,15 @@ function draw_chart(data) {
   u.enter()
     .append("rect")
     .merge(u)
+    
     .transition()
     .attr("y", d => y(d.name))
     .attr("height", y.bandwidth())
     .attr("fill", "#146173")
+    
     .transition()
     .duration(600)
+    .ease(d3.easeCubicIn)
     .attr("x", x(0))
     .attr("width", d => x(d.value))
 

@@ -4,8 +4,8 @@ function calculate_difference(generalistas, medicosDeFamilia, ponto, upper, lowe
     const proporcaoInicialMedicosDeFamilia = parseFloat((1 - proporcaoInicialGeneralistas).toFixed(2))
     
 
-    const pontoPAF = (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * ponto) - (generalistas * 1 + medicosDeFamilia * ponto) /
-    (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * ponto)
+    const pontoPAF = ((proporcaoInicialGeneralistas * 1) + (proporcaoInicialMedicosDeFamilia * ponto)) - ((generalistas * 1) + (medicosDeFamilia * ponto)) /
+    ((proporcaoInicialGeneralistas * 1) + (proporcaoInicialMedicosDeFamilia * ponto))
 
   const upperPAF = (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * upper) - (generalistas * 1 + medicosDeFamilia * upper) /
     (proporcaoInicialGeneralistas * 1 + proporcaoInicialMedicosDeFamilia * upper)
