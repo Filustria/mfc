@@ -51,6 +51,7 @@
   </table>
 </div>
 
+<script src="{% static 'js/graphic.js' %}"></script>
 <script>
 
   const alcance = document.getElementById('alcance')
@@ -75,11 +76,11 @@
     let new_data = []
     data.map( (d) => {
       let resultado = calculate_difference(generalistas, medicosDeFamilia, d.ponto, d.upper, d.lower, d.ocorrencias, d.y, d.z)
-      d.value =  ((resultado[0]*d.ocorrencias/100)+d.ocorrencias).toFixed(0)
+      d.value =  parseInt(((resultado[0]*d.ocorrencias/100)+d.ocorrencias).toFixed(0))
       new_data.push(d)
     })
     const graphic = document.getElementById('graphic')
-    graphic.innerHTML = ""
+    // graphic.innerHTML = ""
     draw_chart(new_data)
   })
 </script>
