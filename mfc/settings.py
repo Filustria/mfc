@@ -85,9 +85,19 @@ WSGI_APPLICATION = 'mfc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': env.db()
-}
+if env('DATABASE_URL', default=None):
+    DATABASES = {
+        'default': env.db()
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'USER': 'postgres',
+            'NAME': env("NAME_DB"),
+            'PASSWORD': env("PASSWORD_DB"),
+        }
+    }
 
 
 # Password validation
