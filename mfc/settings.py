@@ -33,7 +33,8 @@ SECRET_KEY = 'wf7g)y6hhyw(bno)#+093a87b#&hoquqp-^brblys3c01d2obw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# todo: update allowed_hosts
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
