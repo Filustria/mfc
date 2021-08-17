@@ -10,7 +10,7 @@ def get_cell(sheet, column, row):
         return value.strip()
     return value
 
-
+# CRUD - CREATE, RETRIEVE, UPDATE, DELETE
 class EventoAdmin(admin.ModelAdmin):
     list_display = 'id', 'nome', 'tipo', 'risco', 'oportunidades', 'ocorrencias', 'ponto', 'lower', 'upper'
     list_filter = 'tipo',
@@ -24,31 +24,27 @@ class EventoAdmin(admin.ModelAdmin):
             count = 0
             errors = 0
             row = 2
-            for i in range(200):
+            for i in range(500):
                 nome = get_cell(sheet, 'A', row)
                 tipo = get_cell(sheet, 'B', row)
                 risco = get_cell(sheet, 'C', row)
                 oportunidades = get_cell(sheet, 'D', row)
                 ocorrencias = get_cell(sheet, 'E', row)
                 ponto = get_cell(sheet, 'F', row)
-                upper = get_cell(sheet, 'G', row)
-                lower = get_cell(sheet, 'H', row)
+                lower = get_cell(sheet, 'G', row)
+                upper = get_cell(sheet, 'H', row)
 
                 if nome:
                     try:
-                        tipo_de_evento_reversed = dict(map(reversed, tipo_de_evento))
-                        found = list(filter(lambda key: key.lower() == tipo.lower(), tipo_de_evento_reversed.keys()))
-                        if found:
-                            tipo = tipo_de_evento_reversed.get(found[0])
-                        else:
-                            tipo = 'EXAME'
-
-                        ponto = float(ponto.split('(', 1)[0].strip())
-                        upper = float(upper.split('-', 1)[1].split(')')[0].strip())
-                        lower = float(lower.split('(', 1)[1].split('-')[0].strip())
-                        
-                        Evento.objects.create(nome=nome, tipo=tipo, risco=risco,
-                                              oportunidades=oportunidades, ocorrencias=ocorrencias, ponto=ponto, upper=upper, lower=lower)
+                        Evento.objects.create(
+                            nome=nome,
+                            tipo=tipo,
+                            risco=risco,
+                            oportunidades=oportunidades, ocorrencias=ocorrencias,
+                            ponto=ponto,
+                            upper=upper,
+                            lower=lower
+                        )
                         count += 1
                     except Exception as e:
                         print(e)

@@ -51,6 +51,7 @@
   </table>
 </div>
 
+<script src="{% static 'js/graphic.js' %}"></script>
 <script>
 
   const alcance = document.getElementById('alcance')
@@ -58,7 +59,8 @@
   let data = '{{ data | safe }}'
   data = JSON.parse(data)
 
-  draw_chart(data)
+  let max_domain = 350
+  draw_chart(data, max_domain)
 
   const generalistasSpan = document.getElementById('generalistas')
   const medicosDeFamiliaSpan = document.getElementById('medicosDeFamilia')
@@ -75,12 +77,13 @@
     let new_data = []
     data.map( (d) => {
       let resultado = calculate_difference(generalistas, medicosDeFamilia, d.ponto, d.upper, d.lower, d.ocorrencias, d.y, d.z)
-      d.value =  ((resultado[0]*d.ocorrencias/100)+d.ocorrencias).toFixed(0)
+      d.value =  parseInt(((resultado[0]*d.ocorrencias/100)+d.ocorrencias).toFixed(0))
       new_data.push(d)
     })
     const graphic = document.getElementById('graphic')
-    graphic.innerHTML = ""
-    draw_chart(new_data)
+    // graphic.innerHTML = ""
+    console.log(new_data)
+    draw_chart(new_data, max_domain)
   })
 </script>
 
