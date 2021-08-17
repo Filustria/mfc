@@ -1,0 +1,1 @@
+web: gunicorn mfc.wsgi --keep-alive 5

@@ -57,7 +57,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
 
 ROOT_URLCONF = 'mfc.urls'
 
@@ -83,14 +85,22 @@ WSGI_APPLICATION = 'mfc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-        'NAME': env("NAME_DB"),
-        'PASSWORD': env("PASSWORD_DB"),
-    },
-}
+# Caso tenhamos a DATABASE_URL, use ela para configurar o banco
+if env('DATABASE_URL', default=None):
+    DATABASES = {
+        'default': env.db()
+    }
+
+# Senão, use a configuração antiga, usada para rodarmos localmente
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'USER': 'postgres',
+            'NAME': env("NAME_DB"),
+            'PASSWORD': env("PASSWORD_DB"),
+        }
+    }
 
 
 # Password validation
@@ -135,3 +145,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_media/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# caso o caminho não exista, crie.
+# if not os.path.exists(os.path.join(BASE_DIR, 'static')):
+#     os.mkdir(os.path.join(BASE_DIR, 'static'))
+
+# caminho dos arquivos estáticos
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+# caminho de midia
+MEDIA_URL = '/mediafiles/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
