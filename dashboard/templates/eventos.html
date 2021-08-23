@@ -59,7 +59,7 @@
   let data = '{{ data | safe }}'
   data = JSON.parse(data)
 
-  let max_domain = 350
+  let max_domain = 80000
   draw_chart(data, max_domain)
 
   const generalistasSpan = document.getElementById('generalistas')

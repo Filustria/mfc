@@ -10,7 +10,7 @@ def dashboard(request):
 
 
 def eventos(request):
-    eventos = Evento.objects.filter(tipo='HOSPT')
+    eventos = Evento.objects.filter(tipo='EXAME')
     data = [
         {"name" : e.nome, 
         "value" : e.ocorrencias,
